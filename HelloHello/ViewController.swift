@@ -16,7 +16,7 @@ class ViewController: UIViewController, NavigateProtocol {
     }
     
     func pushSecondViewFromRoot() {
-        self.navigationController?.popToRootViewController(animated: false)
+        self.navigationController?.popToRootViewController(animated: true)
         let vc = SecondViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
