@@ -15,6 +15,7 @@ class ViewController: UIViewController, NavigateProtocol {
     }
     
     func presentSomeOtherView() {
+        self.navigationController?.popToRootViewController(animated: false)
         let vc = SecondViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }

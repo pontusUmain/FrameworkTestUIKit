@@ -15,6 +15,7 @@ public class MopProgrammaticVC: UIViewController {
     private let titleLabel = UILabel()
     private let midButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
     private let loginButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+    private let loginButton2 = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
     
     public var nextViewController: UIViewController?
     
@@ -37,6 +38,7 @@ public class MopProgrammaticVC: UIViewController {
     private func addViews() {
         layoutButton()
         layoutLoginButton()
+        layoutLoginButton2()
         layoutTitleLabel()
     }
     
@@ -52,7 +54,7 @@ public class MopProgrammaticVC: UIViewController {
     }
     
     private func layoutLoginButton() {
-        loginButton.setTitle("Present login from root", for: .normal)
+        loginButton.setTitle("Present login on this view", for: .normal)
         loginButton.backgroundColor = .blue
         loginButton.addTarget(self, action: #selector(pressedLoginButton), for: .touchUpInside)
         
@@ -62,6 +64,16 @@ public class MopProgrammaticVC: UIViewController {
         loginButton.topAnchor.constraint(equalTo: midButton.bottomAnchor, constant: 20).isActive = true
     }
     
+    private func layoutLoginButton2() {
+        loginButton2.setTitle("Present login from root", for: .normal)
+        loginButton2.backgroundColor = .blue
+        loginButton2.addTarget(self, action: #selector(pressedLoginButton2), for: .touchUpInside)
+        
+        view.addSubview(loginButton2)
+        loginButton2.translatesAutoresizingMaskIntoConstraints = false
+        loginButton2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginButton2.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20).isActive = true
+    }
     
     private func layoutTitleLabel() {
         titleLabel.text = "I'm a cool VC without a storyboard"
@@ -80,6 +92,11 @@ public class MopProgrammaticVC: UIViewController {
     }
     
     @objc func pressedLoginButton() {
+        navigationProtocol.presentLogin()
+    }
+    
+    @objc func pressedLoginButton2() {
+        navigationController?.popToRootViewController(animated: false)
         navigationProtocol.presentLogin()
     }
 }
