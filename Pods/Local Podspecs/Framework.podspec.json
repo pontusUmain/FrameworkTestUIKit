@@ -1,0 +1,19 @@
+{
+  "name": "Framework",
+  "version": "1.0.0",
+  "summary": "This is the best!",
+  "homepage": "https://github.com/RazeeHJ/FrameworkTest",
+  "license": "MIT",
+  "platforms": {
+    "ios": "13.0"
+  },
+  "authors": {
+    "Razee": "razee.hj@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/RazeeHJ/FrameworkTest.git",
+    "tag": "1.0.0"
+  },
+  "source_files": "Framework/**/*.{swift}",
+  "resources": "Framework/**/*.{storyboard, xcassets}"
+}

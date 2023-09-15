@@ -1,0 +1,21 @@
+PODS:
+  - Framework (1.0.0)
+
+DEPENDENCIES:
+  - Framework (from `https://github.com/RazeeHJ/FrameworkTest.git`)
+
+EXTERNAL SOURCES:
+  Framework:
+    :git: https://github.com/RazeeHJ/FrameworkTest.git
+
+CHECKOUT OPTIONS:
+  Framework:
+    :commit: a7cc3d82d5ecdd6c388c545b38c0bf64bac2d658
+    :git: https://github.com/RazeeHJ/FrameworkTest.git
+
+SPEC CHECKSUMS:
+  Framework: 795fd774f303517fdda0df14ba116d63114dd001
+
+PODFILE CHECKSUM: d4162bde056636d143bb57ef68f38798876e60d8
+
+COCOAPODS: 1.12.1
