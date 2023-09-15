@@ -31,6 +31,5 @@ class SecondViewController: UIViewController  {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-
     }
 }

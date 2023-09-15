@@ -19,10 +19,9 @@ class ViewController: UIViewController, NavigateProtocol {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
     private let titleLabel = UILabel()
-    private let midButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
-    private let midButton2 = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+    private let storyboardButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+    private let progButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,37 +29,36 @@ class ViewController: UIViewController, NavigateProtocol {
         
         view.backgroundColor = .white
         addViews()
-
     }
     
     private func addViews() {
-        layoutButton1()
-        layoutButton2()
+        layoutStoryboardButton()
+        layoutProgrammaticButton()
         layoutTitleLabel()
     }
     
-    private func layoutButton1() {
+    private func layoutStoryboardButton() {
 
-        midButton.setTitle("Press me for Storyboard", for: .normal)
-        midButton.backgroundColor = .gray
-        midButton.addTarget(self, action: #selector(pressedButton1), for: .touchUpInside)
+        storyboardButton.setTitle("Press me for Storyboard", for: .normal)
+        storyboardButton.backgroundColor = .gray
+        storyboardButton.addTarget(self, action: #selector(pressedStoryboardButton), for: .touchUpInside)
 
-        view.addSubview(midButton)
-        midButton.translatesAutoresizingMaskIntoConstraints = false
-        midButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        midButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        view.addSubview(storyboardButton)
+        storyboardButton.translatesAutoresizingMaskIntoConstraints = false
+        storyboardButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        storyboardButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
-    private func layoutButton2() {
+    private func layoutProgrammaticButton() {
 
-        midButton2.setTitle("Press me for Programmatic", for: .normal)
-        midButton2.backgroundColor = .gray
-        midButton2.addTarget(self, action: #selector(pressedButton2), for: .touchUpInside)
+        progButton.setTitle("Press me for Programmatic", for: .normal)
+        progButton.backgroundColor = .gray
+        progButton.addTarget(self, action: #selector(pressedButton2), for: .touchUpInside)
 
-        view.addSubview(midButton2)
-        midButton2.translatesAutoresizingMaskIntoConstraints = false
-        midButton2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        midButton2.topAnchor.constraint(equalTo: midButton.bottomAnchor, constant: 20).isActive = true
+        view.addSubview(progButton)
+        progButton.translatesAutoresizingMaskIntoConstraints = false
+        progButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        progButton.topAnchor.constraint(equalTo: storyboardButton.bottomAnchor, constant: 20).isActive = true
     }
 
     
@@ -73,7 +71,7 @@ class ViewController: UIViewController, NavigateProtocol {
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
     }
     
-    @objc func pressedButton1() {
+    @objc func pressedStoryboardButton() {
         print("Pressed")
         
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: MOPViewController.self))
