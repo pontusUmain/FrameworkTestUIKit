@@ -13,7 +13,8 @@ public class MopProgrammaticVC: UIViewController {
     private let navigationProtocol: NavigateProtocol
     
     private let titleLabel = UILabel()
-    private let midButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+    private let presentButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+    private let pushButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
     private let loginButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
     private let loginButton2 = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
     
@@ -36,21 +37,33 @@ public class MopProgrammaticVC: UIViewController {
     }
     
     private func addViews() {
-        layoutButton()
+        layoutPresentButton()
+        layoutPushButton()
         layoutLoginButton()
         layoutLoginButton2()
         layoutTitleLabel()
     }
     
-    private func layoutButton() {
-        midButton.setTitle("Present nested view controller", for: .normal)
-        midButton.backgroundColor = .gray
-        midButton.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
+    private func layoutPresentButton() {
+        presentButton.setTitle("Present nested view controller", for: .normal)
+        presentButton.backgroundColor = .gray
+        presentButton.addTarget(self, action: #selector(pressedPresentButton), for: .touchUpInside)
         
-        view.addSubview(midButton)
-        midButton.translatesAutoresizingMaskIntoConstraints = false
-        midButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        midButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        view.addSubview(presentButton)
+        presentButton.translatesAutoresizingMaskIntoConstraints = false
+        presentButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        presentButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60).isActive = true
+    }
+    
+    private func layoutPushButton() {
+        pushButton.setTitle("Push nested view controller", for: .normal)
+        pushButton.backgroundColor = .gray
+        pushButton.addTarget(self, action: #selector(pressedPushButton), for: .touchUpInside)
+        
+        view.addSubview(pushButton)
+        pushButton.translatesAutoresizingMaskIntoConstraints = false
+        pushButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        pushButton.centerYAnchor.constraint(equalTo: presentButton.bottomAnchor, constant: 20).isActive = true
     }
     
     private func layoutLoginButton() {
@@ -61,7 +74,7 @@ public class MopProgrammaticVC: UIViewController {
         view.addSubview(loginButton)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loginButton.topAnchor.constraint(equalTo: midButton.bottomAnchor, constant: 20).isActive = true
+        loginButton.topAnchor.constraint(equalTo: pushButton.bottomAnchor, constant: 20).isActive = true
     }
     
     private func layoutLoginButton2() {
@@ -84,19 +97,26 @@ public class MopProgrammaticVC: UIViewController {
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
     }
     
-    @objc func pressedButton() {
+    @objc func pressedPresentButton() {
         nextViewController = NextViewController(navigationProtocol: navigationProtocol)
         if let vc = nextViewController {
             self.present(vc, animated: true)
         }
     }
     
+    @objc func pressedPushButton() {
+        nextViewController = NextViewController(navigationProtocol: navigationProtocol)
+        if let vc = nextViewController {
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     @objc func pressedLoginButton() {
-        navigationProtocol.presentLogin()
+        navigationProtocol.presentLoginFromRoot()
     }
     
     @objc func pressedLoginButton2() {
         navigationController?.popToRootViewController(animated: false)
-        navigationProtocol.presentLogin()
+        navigationProtocol.presentLoginFromRoot()
     }
 }

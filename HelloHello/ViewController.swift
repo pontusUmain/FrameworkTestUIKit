@@ -9,12 +9,13 @@ import UIKit
 import Framework
 
 class ViewController: UIViewController, NavigateProtocol {
-    func presentLogin() {
+    
+    func presentLoginFromRoot() {
         let loginVC = LoginViewController()
         self.present(loginVC, animated: true)
     }
     
-    func presentSomeOtherView() {
+    func pushSecondViewFromRoot() {
         self.navigationController?.popToRootViewController(animated: false)
         let vc = SecondViewController()
         self.navigationController?.pushViewController(vc, animated: true)

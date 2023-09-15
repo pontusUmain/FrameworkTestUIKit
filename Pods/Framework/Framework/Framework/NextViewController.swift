@@ -37,7 +37,7 @@ public class NextViewController: UIViewController {
     }
     
     private func layoutButton() {
-        midButton.setTitle("Navigate out of framework and to a separate screen", for: .normal)
+        midButton.setTitle("Dismiss and push view from root", for: .normal)
         midButton.backgroundColor = .gray
         midButton.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
         
@@ -59,6 +59,6 @@ public class NextViewController: UIViewController {
     
     @objc func pressedButton() {
         self.dismiss(animated: false)
-        navigationProtocol.presentSomeOtherView()
+        navigationProtocol.pushSecondViewFromRoot()
     }
 }

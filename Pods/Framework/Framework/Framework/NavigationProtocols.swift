@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol NavigateProtocol {
-    func presentLogin()
-    func presentSomeOtherView()
+    func presentLoginFromRoot()
+    func pushSecondViewFromRoot()
 }
