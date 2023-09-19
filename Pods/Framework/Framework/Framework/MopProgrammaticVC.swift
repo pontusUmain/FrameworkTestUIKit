@@ -38,6 +38,7 @@ public class MopProgrammaticVC: UIViewController {
     private func addViews() {
         layoutPushButton()
         layoutLoginButton()
+        layoutPushButton2()
         layoutTitleLabel()
     }
     
@@ -66,7 +67,7 @@ public class MopProgrammaticVC: UIViewController {
     private func layoutPushButton2() {
         pushButton2.setTitle("Let's go to account", for: .normal)
         pushButton2.backgroundColor = .blue
-        pushButton2.addTarget(self, action: #selector(pressedLoginButton), for: .touchUpInside)
+        pushButton2.addTarget(self, action: #selector(pressedPushInRootButton), for: .touchUpInside)
         
         view.addSubview(pushButton2)
         pushButton2.translatesAutoresizingMaskIntoConstraints = false

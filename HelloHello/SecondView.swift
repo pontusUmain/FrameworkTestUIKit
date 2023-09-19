@@ -26,7 +26,7 @@ class SecondViewController: UIViewController  {
     }
     
     private func layoutTitleLabel() {
-        titleLabel.text = "You did it!"
+        titleLabel.text = "I'm the demo account section you were navigated to"
         view.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
