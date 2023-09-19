@@ -14,6 +14,7 @@ public class TabBarViewController: UITabBarController, UITabBarControllerDelegat
 
         self.delegate = self
         setupViewControllers()
+        setupAppearance()
     }
 
     func setupViewControllers() {
@@ -24,5 +25,11 @@ public class TabBarViewController: UITabBarController, UITabBarControllerDelegat
         secondVC.tabBarItem = UITabBarItem(title: "Account", image: nil, tag: 1)
 
         viewControllers = [firstVC, secondVC]
+    }
+    
+    func setupAppearance() {
+        let lineView = UIView(frame: CGRect(x: 0, y: 0, width: tabBar.frame.size.width, height: 1))
+        lineView.backgroundColor = UIColor.gray
+        tabBar.addSubview(lineView)
     }
 }

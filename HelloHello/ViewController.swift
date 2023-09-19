@@ -16,12 +16,12 @@ class ViewController: UIViewController, NavigateProtocol {
     }
     
     func pushSecondViewFromRoot() {
+        // Let's pretend this is deeplinking to another tab
         tabBarController?.selectedIndex = 1
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         addViews()
     }
     
