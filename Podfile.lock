@@ -10,7 +10,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Framework:
-    :commit: 816b136c245befe7ed4a153b62047ae6b5886350
+    :commit: cfdec1e25195ca40cb051c4ebf2ec76909e53141
     :git: https://github.com/RazeeHJ/FrameworkTest.git
 
 SPEC CHECKSUMS:
