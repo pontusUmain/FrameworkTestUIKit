@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
     }
     
     private func layoutTitleLabel() {
-        titleLabel.text = "Login view controller"
+        titleLabel.text = "I am a view controller, located in the legacy app"
         view.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
         view.addSubview(midButton)
         midButton.translatesAutoresizingMaskIntoConstraints = false
         midButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        midButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        midButton.centerYAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
     }
     
     @objc func pressedButton() {

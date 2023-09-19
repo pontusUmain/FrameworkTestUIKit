@@ -13,10 +13,9 @@ public class MopProgrammaticVC: UIViewController {
     private let navigationProtocol: NavigateProtocol
     
     private let titleLabel = UILabel()
-    private let presentButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
     private let pushButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+    private let pushButton2 = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
     private let loginButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
-    private let loginButton2 = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
     
     public var nextViewController: UIViewController?
     
@@ -37,37 +36,24 @@ public class MopProgrammaticVC: UIViewController {
     }
     
     private func addViews() {
-        layoutPresentButton()
         layoutPushButton()
         layoutLoginButton()
-        layoutLoginButton2()
         layoutTitleLabel()
     }
     
-    private func layoutPresentButton() {
-        presentButton.setTitle("Present nested view controller", for: .normal)
-        presentButton.backgroundColor = .gray
-        presentButton.addTarget(self, action: #selector(pressedPresentButton), for: .touchUpInside)
-        
-        view.addSubview(presentButton)
-        presentButton.translatesAutoresizingMaskIntoConstraints = false
-        presentButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        presentButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60).isActive = true
-    }
-    
     private func layoutPushButton() {
-        pushButton.setTitle("Push nested view controller", for: .normal)
+        pushButton.setTitle("Let's go to the order list", for: .normal)
         pushButton.backgroundColor = .gray
         pushButton.addTarget(self, action: #selector(pressedPushButton), for: .touchUpInside)
         
         view.addSubview(pushButton)
         pushButton.translatesAutoresizingMaskIntoConstraints = false
         pushButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        pushButton.centerYAnchor.constraint(equalTo: presentButton.bottomAnchor, constant: 20).isActive = true
+        pushButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
     private func layoutLoginButton() {
-        loginButton.setTitle("Present login on this view", for: .normal)
+        loginButton.setTitle("Let's go to login", for: .normal)
         loginButton.backgroundColor = .blue
         loginButton.addTarget(self, action: #selector(pressedLoginButton), for: .touchUpInside)
         
@@ -77,31 +63,24 @@ public class MopProgrammaticVC: UIViewController {
         loginButton.topAnchor.constraint(equalTo: pushButton.bottomAnchor, constant: 20).isActive = true
     }
     
-    private func layoutLoginButton2() {
-        loginButton2.setTitle("Present login from root", for: .normal)
-        loginButton2.backgroundColor = .blue
-        loginButton2.addTarget(self, action: #selector(pressedLoginButton2), for: .touchUpInside)
+    private func layoutPushButton2() {
+        pushButton2.setTitle("Let's go to account", for: .normal)
+        pushButton2.backgroundColor = .blue
+        pushButton2.addTarget(self, action: #selector(pressedLoginButton), for: .touchUpInside)
         
-        view.addSubview(loginButton2)
-        loginButton2.translatesAutoresizingMaskIntoConstraints = false
-        loginButton2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loginButton2.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20).isActive = true
+        view.addSubview(pushButton2)
+        pushButton2.translatesAutoresizingMaskIntoConstraints = false
+        pushButton2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        pushButton2.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20).isActive = true
     }
     
     private func layoutTitleLabel() {
-        titleLabel.text = "I'm a cool VC without a storyboard"
+        titleLabel.text = "I'm the demo order wall"
         view.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
-    }
-    
-    @objc func pressedPresentButton() {
-        nextViewController = NextViewController(navigationProtocol: navigationProtocol)
-        if let vc = nextViewController {
-            self.present(vc, animated: true)
-        }
     }
     
     @objc func pressedPushButton() {
@@ -115,8 +94,7 @@ public class MopProgrammaticVC: UIViewController {
         navigationProtocol.presentLoginFromRoot()
     }
     
-    @objc func pressedLoginButton2() {
-        navigationController?.popToRootViewController(animated: true)
-        navigationProtocol.presentLoginFromRoot()
+    @objc func pressedPushInRootButton() {
+        navigationProtocol.pushSecondViewFromRoot()
     }
 }

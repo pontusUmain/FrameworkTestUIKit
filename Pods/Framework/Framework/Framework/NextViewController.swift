@@ -28,7 +28,6 @@ public class NextViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         addViews()
-        print("Started")
     }
     
     private func addViews() {
@@ -37,7 +36,7 @@ public class NextViewController: UIViewController {
     }
     
     private func layoutButton() {
-        midButton.setTitle("Dismiss and push view from root", for: .normal)
+        midButton.setTitle("Return to order wall", for: .normal)
         midButton.backgroundColor = .gray
         midButton.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
         
@@ -49,7 +48,7 @@ public class NextViewController: UIViewController {
     
     
     private func layoutTitleLabel() {
-        titleLabel.text = "This is a nested view controller"
+        titleLabel.text = "I'm the demo order list"
         view.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
@@ -58,7 +57,6 @@ public class NextViewController: UIViewController {
     }
     
     @objc func pressedButton() {
-        self.dismiss(animated: true)
-        navigationProtocol.pushSecondViewFromRoot()
+        navigationController?.popViewController(animated: true)
     }
 }
